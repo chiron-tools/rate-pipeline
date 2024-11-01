@@ -55,15 +55,12 @@ def update_data_frame(df):
 
     return df
 
-def get_staking_rates():
-    try:
-        df = pd.read_csv(REWARDS_FILE, parse_dates=['date'])
-    except FileNotFoundError:
-        df = pd.DataFrame(columns=['date', 'apr'])
-        logging.info("No existing CSV found. Creating new DataFrame.")
+def get_staking_rates(df):
 
+    df['date'] = pd.to_datetime(df['date'], unit='s', utc=True)
     df = update_data_frame(df)
-    df.to_csv(REWARDS_FILE, index=False)
+    df = df[df['apr'] != 0.0]
+    #df.to_csv(REWARDS_FILE, index=False)
     logging.info("Data saved to CSV.")
     return df
 

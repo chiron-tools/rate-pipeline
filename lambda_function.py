@@ -19,6 +19,8 @@ def lambda_handler(event, context):
 
     df = pd.read_sql("SELECT * FROM eth_staking;", engine)
     print(df)
+    df = get_staking_rates(df)
+    print(df)
     return event 
 
 lambda_handler(0,0)

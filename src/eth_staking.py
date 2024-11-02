@@ -6,7 +6,6 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-#engine = create_engine(f'mysql+mysqlconnector://{username}:{password}@{endpoint}/{database}')
 
 API_FORMAT = "https://beaconcha.in/api/v1/ethstore/{}"
 DAY_ZERO = datetime(2020, 12, 1, tzinfo=timezone.utc)
@@ -61,7 +60,6 @@ def get_staking_rates(df):
     df = update_data_frame(df)
     df = df[df['apr'] != 0.0]
     #df.to_csv(REWARDS_FILE, index=False)
-    logging.info("Data saved to CSV.")
     return df
 
 if __name__ == '__main__':

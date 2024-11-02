@@ -1,4 +1,5 @@
 import os
+import logging
 import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
@@ -7,6 +8,8 @@ from src.utils import ensure_seconds_timestamp
 from src.eth_staking import get_staking_rates
 from config.config import Config
 
+logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 config = Config()
 load_dotenv()
 
